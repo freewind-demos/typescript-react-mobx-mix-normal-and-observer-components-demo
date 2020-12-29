@@ -1,16 +1,13 @@
 import {observer} from 'mobx-react';
-import React from 'react'
-import {Counter} from './modal';
+import React, {FC, useState} from 'react'
+import {MobxCounter} from './MobxCounter';
 
-type Props = {
-  counter: Counter
-}
+export const Hello: FC = () => {
+  const [count, setCount] = useState(0);
 
-function Hello({counter}: Props) {
   return <div>
-    <button onClick={() => counter.increase()}>+1</button>
-    <div>Count: {counter.count}</div>
-    <div>Double: {counter.double}</div>
+    <button onClick={() => setCount(n => n + 1)}>+1</button>
+    <div><MobxCounter count={count}/></div>
   </div>
 }
 
